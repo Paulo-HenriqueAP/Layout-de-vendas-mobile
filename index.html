@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="src/icones_ITENS/icon.ico">
+    <title>Layout de vendas mobile</title>
+
+    <link rel="stylesheet" href="src/css/estilos.css">
+    <link rel="stylesheet" href="src/css/responsivo.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <span id="nomeItem"></span>
+
+    <div id="tela1">
+        <button id="anterior" onclick="it_anterior()">&#9668; ANTERIOR</button>
+
+        <img id="itemNaTela" src="" alt="foto it">
+        <span id="quantidade"></span>
+        <button id="proximo" onclick="proximo_it()">PROXIMO &#9658;</button>
+
+        <span id="preco"></span>
+
+        <button id="remover" onclick="remover()">Remover 1</button>
+        <button id="adicionar" onclick="adicionar()">Adicionar 1</button>
+
+        <button id="pagar_total" onclick="BotaoPagar()">PAGAR</button>
+    </div>
+
+    <button id="todos" ondblclick="location.reload()"></button>
+
+    <div id="tela2" class="hidden">
+        <img id="iconeCartao" src="src/icones_ITENS/cartão.svg">
+
+        <span id="escolhaCD"></span>
+        <button id="credito" onclick="fc()">CRÉDITO</button>
+        <button id="debito" onclick="fd()">DEBITO</button>
+
+        <button id="cancelar" onclick="confirmarCancelamento()">CANCELAR TUDO</button>
+
+        <button id="editar">EDITAR CARRINHO</button>
+
+    </div>
+
+    <div id="tela3" class="hidden">
+        <button id="final">IMAGINE SUA SENHA</button>
+
+        <ul id="comprovante"> COMPROVANTE 
+            <p></p>
+            <li id="is"></li>
+            <li id="fp"></li>
+            <li id="hr"></li>
+            <li id="di"></li>
+        </ul>
+
+        <span id="obrigado">pagamento nada seguro 🛡️</span>
+
+    </div>
+
+    <script src="src/js/index.js"></script>
+</body>
+
+</html>
