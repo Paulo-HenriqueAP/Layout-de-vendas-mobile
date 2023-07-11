@@ -26,11 +26,12 @@ button:hover {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 100%;
-    opacity: 80%;
-    background-color: #16161D;
+    opacity: 75%;
+    background-color: #f4f4ff;
     -webkit-user-drag: none;
     text-align: center;
+    border-radius: 10px;
+    box-shadow: 2px 5px 20px 2px #16161D;
 }
 
 #adicionar {
@@ -43,6 +44,8 @@ button:hover {
     height: 8%;
     transform: translateY(-50%);
     border-radius: 15%;
+    border: none;
+    box-shadow: 1px 1px 1px 1px #16161D;
 }
 
 #remover {
@@ -54,6 +57,8 @@ button:hover {
     height: 8%;
     transform: translateY(-50%);
     border-radius: 15%;
+    border: none;
+    box-shadow: 1px 1px #16161D;
 }
 
 #nomeItem {
@@ -79,7 +84,7 @@ button:hover {
 }
 
 #anterior {
-    top: 40%;
+    top: 38%;
     left: 1%;
     width: max-content;
     border-radius: 5px;
@@ -87,10 +92,13 @@ button:hover {
     border-bottom-left-radius: 10px;
     background-color: #b2b2b2;
     font-size: medium;
+    border: none;
+    box-shadow: 0px 0px 5px 1px #16161D;
+    padding: 2%;
 }
 
 #proximo {
-    top: 40%;
+    top: 38%;
     right: 1%;
     width: max-content;
     border-radius: 5px;
@@ -98,6 +106,9 @@ button:hover {
     border-bottom-right-radius: 10px;
     background-color: bisque;
     font-size: medium;
+    border: none;
+    box-shadow: 0px 0px 5px 1px #16161D;
+    padding: 2%;
 }
 
 #pagar_total {
@@ -130,6 +141,7 @@ button:hover {
     width: max-content;
     background-color: #16161D;
     border-radius: 10px;
+    box-shadow: 3px 3px;
 }
 
 #todos {
@@ -199,6 +211,7 @@ button:hover {
     box-shadow: 0px 0px 5px #16161D;
     border-radius: 10px;
     width: 100%;
+    border: none;
 }
 
 #debito {
@@ -209,6 +222,7 @@ button:hover {
     box-shadow: 0px 0px 5px #16161D;
     border-radius: 10px;
     width: 100%;
+    border: none;
 }
 
 #escolhaCD {
@@ -263,16 +277,16 @@ button:hover {
     transform: translate(-50%, -50%);
     top: 40%;
     left: 50%;
-    font-size: xx-large;
-    width: max-content;
-    box-shadow: 6px 5px #16161D;
+    font-size: x-large;
+    width: 90%;
+    box-shadow: 3px 3px #16161D;
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     border: none;
     background-color: #f4f4ff;
 }
 
-#obrigado{
+#obrigado {
     position: fixed;
     bottom: 2%;
     text-align: center;
@@ -281,7 +295,7 @@ button:hover {
 }
 
 #comprovante {
-    position: absolute; 
+    position: absolute;
     top: 55%;
     font-size: medium;
     width: max-content;
@@ -295,4 +309,100 @@ button:hover {
 
 li {
     margin: 10px;
+}
+
+.temaDark #itemNaTela {
+    background-color: #16161D;
+    box-shadow: 2px 5px 20px 2px #f4f4ff;
+}
+
+.temaDark {
+    background-color: #16161D;
+}
+
+.temaDark #pagar_total {
+    color: #f4f4ff;
+    box-shadow: 0px 0px 1px #f4f4ff;
+}
+
+.temaDark #nomeItem {
+    color: #f4f4ff;
+    box-shadow: 0px 0px 1px #f4f4ff;
+}
+
+.temaDark #todos {
+    color: #f4f4ff;
+    background-color: #16161D;
+    box-shadow: 0.5px 0.5px #f4f4ff
+}
+
+.temaDark #proximo {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px bisque;
+}
+
+.temaDark #anterior {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #b2b2b2;
+}
+
+.temaDark #adicionar {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #007300;
+}
+
+.temaDark #remover {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #cc0000;
+}
+
+.temaDark #cancelar {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #f4f4ff;
+}
+
+.temaDark #editar {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #f4f4ff;
+}
+
+.temaDark #obrigado {
+    color: #f4f4ff;
+}
+
+.temaDark #comprovante {
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px #f4f4ff;
+}
+
+.temaDark #final {
+    color: #f4f4ff;
+    background-color: #16161D;
+    box-shadow: 3px 3px #f4f4ff;
+}
+
+.temaDark #credito {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #ff7a00;
+}
+
+.temaDark #debito {
+    background-color: #16161D;
+    color: #f4f4ff;
+    box-shadow: 0px 0px 5px 1px #ffc60a;
+}
+
+.temaDark #preco {
+    box-shadow: 1px 1px;
+}
+
+.i37 {
+    transform: rotate(180deg);
 }

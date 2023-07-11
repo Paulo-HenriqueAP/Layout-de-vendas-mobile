@@ -1,6 +1,6 @@
 @media (max-height:420px) {
     #nomeItem {
-       top: 3%;
+        top: 3%;
     }
 
     #preco {
@@ -28,7 +28,6 @@
     #debito {
         height: max-content;
         bottom: 20%;
-
     }
 
     #cancelar {
@@ -43,5 +42,15 @@
         top: 4%;
     }
 
-   
+    #comprovante {
+        top: 25%;
+    }
+
+    #nomeItem {
+        display: none;
+    }
+
+    #final {
+        top: 10%;
+    }
 }
