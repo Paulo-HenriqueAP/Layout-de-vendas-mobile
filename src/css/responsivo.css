@@ -1,10 +1,19 @@
 @media (max-height:420px) {
+
+    #itemNaTela {
+        top: 35%;
+    }
+
+    #quantidade {
+        top: 35%;
+    }
+
     #nomeItem {
-        top: 3%;
+       top: 0%;
     }
 
     #preco {
-        bottom: 20%;
+        bottom: 30%;
     }
 
     #pagar_total {
@@ -38,19 +47,23 @@
         height: max-content;
     }
 
-    .topoTela {
-        top: 4%;
-    }
-
     #comprovante {
-        top: 25%;
-    }
-
-    #nomeItem {
-        display: none;
+        top: 18%;
     }
 
     #final {
         top: 10%;
+    }
+
+    #unidadesPers {
+        bottom: 20%;
+    }
+
+    #iconeCartao {
+        top: 9%;
+    }
+
+    #impar, #par, #debito, #credito {
+        height: max-content;
     }
 }

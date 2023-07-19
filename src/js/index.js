@@ -6,12 +6,15 @@ let mostrarPreco = document.getElementById("preco");
 let quantCarrinhoTela = document.getElementById("todos");
 let contarCarrinho = 0;
 let valorTotal = 0;
+let valorTotal_original = 0;
 let valorItem = 0;
 let valorTotalArredondado = valorTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-let editarCarriinho = document.getElementById("editar");
+let editarCarrinho = document.getElementById("editar");
 let cancelarTudo = document.getElementById("cancelar");
 let off = false;
 var luz = "OFF"
+let desconto = 0
+let add = 1
 let unidades = [
     0, 0, 0, 0, 0,
     0, 0, 0, 0, 0,
@@ -40,7 +43,7 @@ const itens = [
     { it: 5, icone: "src/icones_ITENS/i (6).png", valorItem: 0, nomeItem: "MALWARE", unidades: 0, msg: "y", msG1: "Adicone mais.  É gratis!!", msG2: "NÃO." },
     { it: 6, icone: "src/icones_ITENS/i (7).png", valorItem: 22.80, nomeItem: "DVD", unidades: 0 },
     { it: 7, icone: "src/icones_ITENS/i (8).png", valorItem: 51, nomeItem: "?", unidades: 0 },
-    { it: 8, icone: "src/icones_ITENS/i (9).png", valorItem: 0.1, nomeItem: "DOAÇÃO", unidades: 0 },
+    { it: 8, icone: "src/icones_ITENS/i (9).png", valorItem: 0.2, nomeItem: "DOAÇÃO", unidades: 0 },
     { it: 9, icone: "src/icones_ITENS/i (10).png", valorItem: 62.45, nomeItem: "DESENHO", unidades: 0 },
     { it: 10, icone: "src/icones_ITENS/i (11).png", valorItem: 4.99, nomeItem: "IMPRIMIR FOTO", unidades: 0 },
     { it: 11, icone: "src/icones_ITENS/i (12).png", valorItem: 3.50, nomeItem: "JORNAL", unidades: 0 },
@@ -69,7 +72,7 @@ const itens = [
     { it: 34, icone: "src/icones_ITENS/i (35).png", valorItem: 16.70, nomeItem: "HAMBÚRGUER", unidades: 0 },
     { it: 35, icone: "src/icones_ITENS/i (36).png", valorItem: 9, nomeItem: "PINGUIM KENNY", unidades: 0 },
     { it: 36, icone: "src/icones_ITENS/i (37).png", valorItem: 354.90, nomeItem: "HEADPHONE", unidades: 0 },
-    { it: 37, icone: "src/icones_ITENS/i (38).png", valorItem: 0, nomeItem: "LUZ OFF/ ON", unidades: 0, msg: "y", msG1: "GRATUITO", msG2: "GRATUITO" },
+    { it: 37, icone: "src/icones_ITENS/i (38).png", valorItem: 0, nomeItem: "LUZ OFF/ ON", unidades: 0},
     { it: 38, icone: "src/icones_ITENS/i (39).png", valorItem: 10, nomeItem: "CAVEIRA", unidades: 0 },
     { it: 39, icone: "src/icones_ITENS/i (40).png", valorItem: 45.90, nomeItem: "QUEIJO", unidades: 0 },
     { it: 40, icone: "src/icones_ITENS/i (41).png", valorItem: 13.99, nomeItem: "TOMATE", unidades: 0 },
@@ -80,7 +83,7 @@ const itens = [
     { it: 45, icone: "src/icones_ITENS/i (46).png", valorItem: 25, nomeItem: "CORTAR CABELO", unidades: 0 },
     { it: 46, icone: "src/icones_ITENS/i (47).png", valorItem: 45.85, nomeItem: "CONTROLE RETRÔ", unidades: 0 },
     { it: 47, icone: "src/icones_ITENS/i (48).png", valorItem: 14.40, nomeItem: "RATO", unidades: 0 },
-    { it: 48, icone: "src/icones_ITENS/i (49).png", valorItem: 0, nomeItem: "AMOR", unidades: 0, msg: "y", msG1: "VOCÊ NÃO TÁ MERECENDO!", msG2: "OK" },
+    { it: 48, icone: "src/icones_ITENS/i (49).png", valorItem: 0, nomeItem: "AMOR", unidades: 0, msg: "y", msG1: "VOCÊ NÃO ESTÁ MERECENDO!", msG2: "COM PRAZER <3" },
     { it: 49, icone: "src/icones_ITENS/i (50).png", valorItem: 899.90, nomeItem: "CONSOLE PORTÁTIL", unidades: 0 },
 ];
 
@@ -92,11 +95,10 @@ function virus() {
     atualizar()
 };
 
-it = (Math.floor(Math.random() * 49))
-
-
+it = (Math.floor(Math.random() * 49));
 
 function atualizar() {
+    impar_par = (Math.floor(Math.random() * 999))
     nomeItem.classList.remove("animacaoParaquedas")
     nomeItem.classList.remove("animacaoAlien")
 
@@ -142,7 +144,12 @@ function atualizar() {
     }, 500)
 };
 
+
 function it_anterior() {
+    document.getElementById("unidadesPers").value = ""
+    add = 1
+    document.getElementById("remover").textContent = "Remover 1"
+    document.getElementById("adicionar").textContent = "Adicionar 1"
     nomeItem.textContent = "..."
     mostrarPreco.textContent = "..."
     switch (it) {
@@ -157,6 +164,10 @@ function it_anterior() {
 };
 
 function proximo_it() {
+    document.getElementById("unidadesPers").value = ""
+    add = 1
+    document.getElementById("remover").textContent = "Remover 1"
+    document.getElementById("adicionar").textContent = "Adicionar 1"
     nomeItem.textContent = "..."
     mostrarPreco.textContent = "..."
     switch (it) {
@@ -171,7 +182,25 @@ function proximo_it() {
     atualizar()
 };
 
+function quantP() {
+    quantidadeP = document.getElementById("unidadesPers").value
+
+    if (quantidadeP <= 0 || quantidadeP > 999) {
+        quantidadeP = 1
+        document.getElementById("unidadesPers").value = ""
+    }
+    
+    document.getElementById("remover").textContent = "Remover " + quantidadeP
+    document.getElementById("adicionar").textContent = "Adicionar " + quantidadeP
+    add = parseInt(quantidadeP)
+}
+
 function adicionar() {
+    if (itens[it].msg === "y") {
+        mostrarPreco.textContent = itens[it].msG1;
+        return;
+    }
+
     switch (it) {
         case 5:
             unidades[it] += 1
@@ -192,17 +221,13 @@ function adicionar() {
                 }
             }, 1400)
             return
-    }
 
-    if (itens[it].msg === "y") {
-        mostrarPreco.textContent = itens[it].msG1;
-        return;
+            default:
+                unidades[it] += add
+                valorTotal += itens[it].valorItem * add
+                contarCarrinho += add
+                atualizar()
     }
-
-    unidades[it] += 1
-    valorTotal += itens[it].valorItem
-    contarCarrinho++
-    atualizar()
 };
 
 function remover() {
@@ -210,30 +235,40 @@ function remover() {
         case 37:
             luz = "OFF"
             atualizar()
+            break;
     }
 
     if (itens[it].msg === "y") {
-        mostrarPreco.textContent = itens[it].msG2
+        mostrarPreco.textContent = itens[it].msG2;
         return;
     }
 
-    switch (unidades[it]) {
-        case 0:
-            return
-        default:
-            contarCarrinho--
-            valorTotal -= itens[it].valorItem
-            unidades[it] -= 1
-            atualizar()
+    if (unidades[it] <= 0) {
+        return;
+    }
+    
+    switch (true) {
+        case unidades[it] < add:
+            const tirar = unidades[it];
+            unidades[it] = 0;
+            valorTotal -= itens[it].valorItem * tirar;
+            contarCarrinho -= tirar;
+            atualizar();
+            break;
+        case unidades[it] >= add:
+            unidades[it] -= add;
+            valorTotal -= itens[it].valorItem * add;
+            contarCarrinho -= add;
+            atualizar();
+            break;
     }
 };
 
 function BotaoPagar() {
-
     switch (contarCarrinho) {
         case 0:
             return;
-    }
+    };
 
     tela1.classList.toggle("opacity")
     quantCarrinhoTela.textContent = "🐢- CARREGANDO | 🛒= " + contarCarrinho
@@ -251,21 +286,27 @@ function BotaoPagar() {
         if (off === true) {
             document.getElementById("credito").classList.add("opacity")
             document.getElementById("debito").classList.add("opacity")
-            editarCarriinho.classList.add("opacity")
+            document.getElementById("desconto").classList.add("opacity")
+            editarCarrinho.classList.add("opacity")
             nomeItem.textContent = "MALWARE DETECTADO ❌ NECESSÁRIO CANCELAR"
         }
     }, 4000)
 
 };
 
-editarCarriinho.addEventListener("mousedown", () => {
+editarCarrinho.addEventListener("mousedown", () => {
     tela1.classList.remove("hidden")
     tela2.classList.add("hidden")
     tela1.classList.remove("opacity")
     quantCarrinhoTela.classList.remove("topoTela")
     cancelarTudo.textContent = "CANCELAR TUDO"
+
+    if (desconto > 0) {
+        alert("Desconto já aplicado e não sofrerá alterações.")
+    }
+
     atualizar()
-})
+});
 
 function confirmarCancelamento() {
     cancelarTudo.textContent = "CONFIRMAR CANCELAMENTO"
@@ -275,31 +316,84 @@ cancelarTudo.addEventListener("mousedown", function () {
     if (cancelarTudo.textContent === "CONFIRMAR CANCELAMENTO") {
         location.reload()
     }
-})
+});
+
+document.getElementById("desconto").addEventListener("click", function () {
+    cancelarTudo.classList.add("hidden")
+    editarCarrinho.classList.add("hidden")
+    document.getElementById("impar").classList.remove("hidden")
+    document.getElementById("par").classList.remove("hidden")
+    document.getElementById("desconto").textContent = "↶ Escolha corretamente ↷"
+});
+
+document.getElementById("par").addEventListener("click", function () {
+    escolha = "par"
+    imparOUpar()
+});
+
+document.getElementById("impar").addEventListener("click", function () {
+    escolha = "impar"
+    imparOUpar()
+});
+
+function imparOUpar() {
+    cancelarTudo.classList.remove("hidden")
+    editarCarrinho.classList.remove("hidden")
+    document.getElementById("impar").classList.add("hidden")
+    document.getElementById("par").classList.add("hidden")
+
+    if (impar_par % 2 === 0) {
+        foi = "PAR"
+    } else {
+        foi = "IMPAR"
+    }
+
+    if (impar_par % 2 === 0 && escolha === "par") {
+        document.getElementById("desconto").textContent = "Você GANHOU desconto! - " + foi;
+
+    } else if (impar_par % 2 !== 0 && escolha === "impar") {
+        document.getElementById("desconto").textContent = "Você GANHOU desconto! - " + foi;
+
+    } else {
+        document.getElementById("desconto").textContent = "Você NAÕ ganhou desconto - " + foi;
+        document.getElementById("desconto").style = "color: #8a0303;"
+        document.getElementById("desconto").classList.add("opacity");
+        return;
+    }
+
+    document.getElementById("desconto").style = "color: #007300;"
+    desconto = 0.1 * contarCarrinho
+    document.getElementById("desconto").classList.add("opacity");
+    valorTotal -= desconto;
+    valorTotalArredondado = valorTotal.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+    nomeItem.textContent = "VOU PAGAR " + valorTotalArredondado + " USANDO:";
+};
 
 function fc() {
     formaPagamento = "CRÉDITO"
-    stt = "A fatura vai chegar"
+    stt = "A fatura de " + valorTotalArredondado + " vai chegar"
     fim()
 };
 
 function fd() {
     formaPagamento = "DEBITO"
-    stt = "Concluído"
+    stt = "Pagamento de " + valorTotalArredondado + " concluído"
     fim()
 };
 
 function fim() {
+    valorTotal_original = valorTotal + desconto
     nomeItem.textContent = ". . . "
     tela2.classList.add("hidden")
     tela3.classList.remove("hidden")
     yn = (Math.floor(Math.random() * 2))
     quantCarrinhoTela.classList.add("hidden")
-    document.getElementById("is").textContent = "Itens: " + contarCarrinho + " | " + valorTotalArredondado
+    document.getElementById("is").textContent = "Itens: " + contarCarrinho + " | " + valorTotal_original.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+
     setTimeout(function () {
         if (yn === 1) {
             document.getElementById("final").textContent = "PAGAMENTO REPROVADO"
-            document.getElementById("final").style = "color: #8a0303"
+            document.getElementById("final").style = "color: #8a0303;"
             stt = "CANCELADO!"
         } else {
             document.getElementById("final").style = "color: #007300;"
@@ -309,10 +403,12 @@ function fim() {
         document.getElementById("st").textContent = "Status: " + stt
         document.getElementById("fp").textContent = "Forma de pagamento > " + formaPagamento
         document.getElementById("hr").textContent = new Date().toLocaleDateString() + " | " + new Date().toLocaleTimeString()
-        document.getElementById("di").textContent = "ID " + (Math.random() + contarCarrinho)
+        document.getElementById("di").textContent = "ID: " + (Math.random() + contarCarrinho)
+        document.getElementById("ds").textContent = "Desconto > " + desconto.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         //https://stackoverflow.com/questions/18229022/how-to-show-current-time-in-javascript-in-the-format-hhmmss
 
     }, 3000)
+
     document.getElementById("final").addEventListener("dblclick", function () {
         location.reload()
     })

@@ -30,6 +30,7 @@
 
         <button id="remover" onclick="remover()">Remover 1</button>
         <button id="adicionar" onclick="adicionar()">Adicionar 1</button>
+        <input id="unidadesPers" min="0" max="999" type="number" onchange="quantP()">
 
         <button id="pagar_total" onclick="BotaoPagar()">PAGAR</button>
     </div>
@@ -42,6 +43,12 @@
         <span id="escolhaCD"></span>
         <button id="credito" onclick="fc()">CRÉDITO</button>
         <button id="debito" onclick="fd()">DEBITO</button>
+        
+       
+            <button id="desconto">%</button>
+            <button id="par" class="hidden">PAR</button>
+            <button id="impar" class="hidden">IMPAR</button>
+       
 
         <button id="cancelar" onclick="confirmarCancelamento()">CANCELAR TUDO</button>
 
@@ -55,6 +62,7 @@
         <ul id="comprovante"> COMPROVANTE 
             <p></p>
             <li id="is"></li>
+            <li id="ds"></li>
             <li id="fp"></li>
             <li id="hr"></li>
             <li id="di"></li>
