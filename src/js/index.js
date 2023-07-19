@@ -196,11 +196,6 @@ function quantP() {
 }
 
 function adicionar() {
-    if (itens[it].msg === "y") {
-        mostrarPreco.textContent = itens[it].msG1;
-        return;
-    }
-
     switch (it) {
         case 5:
             unidades[it] += 1
@@ -227,6 +222,11 @@ function adicionar() {
                 valorTotal += itens[it].valorItem * add
                 contarCarrinho += add
                 atualizar()
+    }
+
+    if (itens[it].msg === "y") {
+        mostrarPreco.textContent = itens[it].msG1;
+        return;
     }
 };
 
