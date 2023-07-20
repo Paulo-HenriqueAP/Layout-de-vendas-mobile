@@ -40,7 +40,7 @@ const itens = [
     { it: 2, icone: "src/icones_ITENS/i (3).png", valorItem: 50, nomeItem: "PEN DRIVE", unidades: 0 },
     { it: 3, icone: "src/icones_ITENS/i (4).png", valorItem: 0, nomeItem: "TEMPO", unidades: 0, msg: "y", msG1: "NÃO SE COMPRA", msG2: "TOME DECISOES RUINS" },
     { it: 4, icone: "src/icones_ITENS/i (5).png", valorItem: 26.99, nomeItem: "CINEMA", unidades: 0 },
-    { it: 5, icone: "src/icones_ITENS/i (6).png", valorItem: 0, nomeItem: "MALWARE", unidades: 0, msg: "y", msG1: "Adicone mais.  É gratis!!", msG2: "NÃO." },
+    { it: 5, icone: "src/icones_ITENS/i (6).png", valorItem: 0, nomeItem: "MALWARE", unidades: 0},
     { it: 6, icone: "src/icones_ITENS/i (7).png", valorItem: 22.80, nomeItem: "DVD", unidades: 0 },
     { it: 7, icone: "src/icones_ITENS/i (8).png", valorItem: 51, nomeItem: "?", unidades: 0 },
     { it: 8, icone: "src/icones_ITENS/i (9).png", valorItem: 0.2, nomeItem: "DOAÇÃO", unidades: 0 },
@@ -83,14 +83,13 @@ const itens = [
     { it: 45, icone: "src/icones_ITENS/i (46).png", valorItem: 25, nomeItem: "CORTAR CABELO", unidades: 0 },
     { it: 46, icone: "src/icones_ITENS/i (47).png", valorItem: 45.85, nomeItem: "CONTROLE RETRÔ", unidades: 0 },
     { it: 47, icone: "src/icones_ITENS/i (48).png", valorItem: 14.40, nomeItem: "RATO", unidades: 0 },
-    { it: 48, icone: "src/icones_ITENS/i (49).png", valorItem: 0, nomeItem: "AMOR", unidades: 0, msg: "y", msG1: "VOCÊ NÃO ESTÁ MERECENDO!", msG2: "COM PRAZER <3" },
+    { it: 48, icone: "src/icones_ITENS/i (49).png", valorItem: 0, nomeItem: "AMOR", unidades: 0, msg: "y", msG1: "VOCÊ NÃO ESTÁ MERECENDO!", msG2: "VOCÊ TEM QUE TER PARA TIRAR" },
     { it: 49, icone: "src/icones_ITENS/i (50).png", valorItem: 899.90, nomeItem: "CONSOLE PORTÁTIL", unidades: 0 },
 ];
 
 function virus() {
     random = (Math.floor(Math.random() * 49));
     item_na_TELA.setAttribute("src", itens[random] = "")
-    mostrarPreco.textContent = "Isso mesmo, adicone mais.  É gratis!!"
     off = true
     atualizar()
 };
@@ -196,6 +195,12 @@ function quantP() {
 }
 
 function adicionar() {
+    
+    if (itens[it].msg === "y") {
+        mostrarPreco.textContent = itens[it].msG1;
+        return;
+    }
+
     switch (it) {
         case 5:
             unidades[it] += 1
@@ -223,11 +228,6 @@ function adicionar() {
                 contarCarrinho += add
                 atualizar()
     }
-
-    if (itens[it].msg === "y") {
-        mostrarPreco.textContent = itens[it].msG1;
-        return;
-    }
 };
 
 function remover() {
@@ -236,6 +236,9 @@ function remover() {
             luz = "OFF"
             atualizar()
             break;
+        case 5:
+            mostrarPreco.textContent = "NÃO."
+            return;
     }
 
     if (itens[it].msg === "y") {
